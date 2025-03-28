@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频音频提取与转写</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>视频音频提取与转写</h1>
+            <p class="subtitle">轻松提取视频音频，快速转写文字</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-box" id="uploadBox">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>拖放视频文件到这里</h3>
+                    <p>或</p>
+                    <button class="upload-btn" id="uploadBtn">选择文件</button>
+                    <input type="file" id="fileInput" accept="video/*" hidden>
+                </div>
+            </div>
+
+            <div class="process-section" id="processSection" style="display: none;">
+                <div class="video-preview">
+                    <video id="videoPreview" controls></video>
+                </div>
+                
+                <div class="options">
+                    <div class="option-group">
+                        <h3>提取选项</h3>
+                        <div class="option-item">
+                            <label>
+                                <input type="checkbox" id="extractAudio" checked>
+                                提取音频
+                            </label>
+                        </div>
+                        <div class="option-item">
+                            <label>
+                                <input type="checkbox" id="transcribeText" checked>
+                                转写文字
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <h3>音频格式</h3>
+                        <select id="audioFormat">
+                            <option value="mp3">MP3</option>
+                            <option value="wav">WAV</option>
+                            <option value="ogg">OGG</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <h3>转写语言</h3>
+                        <select id="transcribeLanguage">
+                            <option value="zh">中文</option>
+                            <option value="en">英文</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="process-btn" id="processBtn">
+                    <i class="fas fa-cog"></i>
+                    开始处理
+                </button>
+            </div>
+
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="result-tabs">
+                    <button class="tab-btn active" data-tab="audio">音频文件</button>
+                    <button class="tab-btn" data-tab="text">转写文本</button>
+                </div>
+
+                <div class="tab-content active" id="audioTab">
+                    <div class="audio-player">
+                        <audio id="audioPlayer" controls></audio>
+                    </div>
+                    <button class="download-btn" id="downloadAudio">
+                        <i class="fas fa-download"></i>
+                        下载音频
+                    </button>
+                </div>
+
+                <div class="tab-content" id="textTab">
+                    <div class="text-content">
+                        <textarea id="transcribedText" readonly></textarea>
+                    </div>
+                    <button class="download-btn" id="downloadText">
+                        <i class="fas fa-download"></i>
+                        下载文本
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <div class="progress-modal" id="progressModal" style="display: none;">
+            <div class="progress-content">
+                <div class="progress-circle">
+                    <div class="progress-text">0%</div>
+                </div>
+                <h3>正在处理中...</h3>
+                <p>请稍候，正在提取音频并转写文字</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
